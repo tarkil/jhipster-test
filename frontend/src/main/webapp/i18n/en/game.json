@@ -1,0 +1,30 @@
+{
+    "frontendApp": {
+        "game" : {
+            "home": {
+                "title": "Games",
+                "createLabel": "Create a new Game",
+                "createOrEditLabel": "Create or edit a Game",
+                "search": "Search for Game"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Game {{ id }}?"
+            },
+            "detail": {
+                "title": "Game"
+            },
+            "name": "Name",
+            "description": "Description",
+            "launchDate": "Launch Date",
+            "blocks": "Blocks",
+            "cardTypes": "Card Types"
+        }
+    },
+    "cardsApp": {
+        "game" : {
+            "created": "A new Game is created with identifier {{ param }}",
+            "updated": "A Game is updated with identifier {{ param }}",
+            "deleted": "A Game is deleted with identifier {{ param }}"
+        }
+    }
+}

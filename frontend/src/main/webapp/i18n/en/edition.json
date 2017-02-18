@@ -1,0 +1,29 @@
+{
+    "frontendApp": {
+        "edition" : {
+            "home": {
+                "title": "Editions",
+                "createLabel": "Create a new Edition",
+                "createOrEditLabel": "Create or edit a Edition",
+                "search": "Search for Edition"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Edition {{ id }}?"
+            },
+            "detail": {
+                "title": "Edition"
+            },
+            "name": "Name",
+            "launchDate": "Launch Date",
+            "cards": "Cards",
+            "block": "Block"
+        }
+    },
+    "cardsApp": {
+        "edition" : {
+            "created": "A new Edition is created with identifier {{ param }}",
+            "updated": "A Edition is updated with identifier {{ param }}",
+            "deleted": "A Edition is deleted with identifier {{ param }}"
+        }
+    }
+}

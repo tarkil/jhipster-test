@@ -1,0 +1,41 @@
+
+<div *ngIf="edition">
+    <h2><span jhiTranslate="frontendApp.edition.detail.title">Edition</span> {{edition.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="frontendApp.edition.name">Name</span></dt>
+        <dd>
+            <span>{{edition.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="frontendApp.edition.launchDate">Launch Date</span></dt>
+        <dd>
+            <span>{{edition.launchDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="frontendApp.edition.cards">Cards</span></dt>
+        <dd>
+            <span *ngFor="let cards of edition.cards; let last = last">
+                <a [routerLink]="['/card', cards?.id ]">{{cards.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span jhiTranslate="frontendApp.edition.block">Block</span></dt>
+        <dd>
+            <div *ngIf="edition.blockId">
+                <a [routerLink]="['block', edition.blockId]">{{edition.blockId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'edition/'+ edition.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

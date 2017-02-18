@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Edition.
+    -->
+    <changeSet id="20170218181123-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="editions_id"
+                                 baseTableName="edition_cards"
+                                 constraintName="fk_edition_cards_editions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="edition"/>
+        <addForeignKeyConstraint baseColumnNames="cards_id"
+                                 baseTableName="edition_cards"
+                                 constraintName="fk_edition_cards_cards_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="card"/>
+        
+        <addForeignKeyConstraint baseColumnNames="block_id"
+                                 baseTableName="edition"
+                                 constraintName="fk_edition_block_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="block"/>
+
+    </changeSet>
+</databaseChangeLog>

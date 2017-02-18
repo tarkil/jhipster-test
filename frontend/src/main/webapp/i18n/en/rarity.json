@@ -1,0 +1,13 @@
+{
+    "frontendApp": {
+        "Rarity" : {
+            "null": "",
+            "MYTHIC": "MYTHIC",
+            "RARE": "RARE",
+            "UNCOMMON": "UNCOMMON",
+            "COMMON": "COMMON",
+            "SPECIAL": "SPECIAL",
+            "BASIC": "BASIC"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+
+<div *ngIf="cardType">
+    <h2><span jhiTranslate="frontendApp.cardType.detail.title">Card Type</span> {{cardType.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="frontendApp.cardType.name">Name</span></dt>
+        <dd>
+            <span>{{cardType.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="frontendApp.cardType.game">Game</span></dt>
+        <dd>
+            <div *ngIf="cardType.gameId">
+                <a [routerLink]="['game', cardType.gameId]">{{cardType.gameId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'card-type/'+ cardType.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

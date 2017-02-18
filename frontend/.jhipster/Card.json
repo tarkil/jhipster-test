@@ -1,0 +1,72 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "cardType",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "card"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "reprints",
+            "otherEntityName": "reprint",
+            "otherEntityRelationshipName": "card"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cost",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "textFlavour",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "attack",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "defense",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "trait",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rarity",
+            "fieldType": "Rarity",
+            "fieldValues": "MYTHIC,RARE,UNCOMMON,COMMON,SPECIAL,BASIC"
+        }
+    ],
+    "changelogDate": "20170218221533",
+    "entityTableName": "card",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "microserviceName": "cards",
+    "searchEngine": "elasticsearch"
+}

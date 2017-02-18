@@ -1,0 +1,98 @@
+<div>
+    <h2><span jhiTranslate="frontendApp.card.home.title">Cards</span>
+        <button class="btn btn-primary float-xs-right create-card" [routerLink]="['/', { outlets: { popup: ['card-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="frontendApp.card.home.createLabel">
+            Create new Card
+            </span>
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right">
+                        <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'frontendApp.card.home.search' | translate }}">
+                        <span  class="input-group-btn width-min">
+                            <button class="btn btn-info" (click)="search(currentSearch)">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" *ngIf="currentSearch">
+                            <button class="btn btn-info" (click)="clear()">
+                                <span class="fa fa-trash-o"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cards">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="frontendApp.card.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cost"><span jhiTranslate="frontendApp.card.cost">Cost</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="textFlavour"><span jhiTranslate="frontendApp.card.textFlavour">Text Flavour</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="frontendApp.card.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="attack"><span jhiTranslate="frontendApp.card.attack">Attack</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="defense"><span jhiTranslate="frontendApp.card.defense">Defense</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="trait"><span jhiTranslate="frontendApp.card.trait">Trait</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="rarity"><span jhiTranslate="frontendApp.card.rarity">Rarity</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="typeId"><span jhiTranslate="frontendApp.card.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let card of cards ;trackBy: trackId">
+                <td><a [routerLink]="['../card', card.id ]">{{card.id}}</a></td>
+                <td>{{card.name}}</td>
+                <td>{{card.cost}}</td>
+                <td>{{card.textFlavour}}</td>
+                <td>{{card.description}}</td>
+                <td>{{card.attack}}</td>
+                <td>{{card.defense}}</td>
+                <td>{{card.trait}}</td>
+                <td jhiTranslate="{{'frontendApp.Rarity.' + card.rarity}}">{{card.rarity}}</td>
+                <td>
+                    <div *ngIf="card.typeId">
+                        <a [routerLink]="['../card-type', card.typeId  ]" >{{card.typeId}}</a>
+                    </div>
+                </td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../card', card.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="cards && cards.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>

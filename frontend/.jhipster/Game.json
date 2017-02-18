@@ -1,0 +1,49 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "blocks",
+            "otherEntityName": "block",
+            "otherEntityRelationshipName": "game"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "cardTypes",
+            "otherEntityName": "cardType",
+            "otherEntityRelationshipName": "game"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 5,
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 250
+        },
+        {
+            "fieldName": "launchDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20170218221533",
+    "entityTableName": "game",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "microserviceName": "cards",
+    "searchEngine": "elasticsearch"
+}

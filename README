@@ -1,0 +1,11 @@
+From auth
+	 docker-compose -f src/main/docker/mariadb.yml up -d
+	 docker-compose -f src/main/docker/jhipster-registry.yml up -d
+	./mvnw
+Form cards
+	./mvnw
+
+From frontend
+	./mvnw
+
+Databases required cards, auth y frontend

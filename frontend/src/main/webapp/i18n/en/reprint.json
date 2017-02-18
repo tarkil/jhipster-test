@@ -1,0 +1,30 @@
+{
+    "frontendApp": {
+        "reprint" : {
+            "home": {
+                "title": "Reprints",
+                "createLabel": "Create a new Reprint",
+                "createOrEditLabel": "Create or edit a Reprint",
+                "search": "Search for Reprint"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Reprint {{ id }}?"
+            },
+            "detail": {
+                "title": "Reprint"
+            },
+            "image": "Image",
+            "artist": "Artist",
+            "number": "Number",
+            "card": "Card",
+            "edition": "Edition"
+        }
+    },
+    "cardsApp": {
+        "reprint" : {
+            "created": "A new Reprint is created with identifier {{ param }}",
+            "updated": "A Reprint is updated with identifier {{ param }}",
+            "deleted": "A Reprint is deleted with identifier {{ param }}"
+        }
+    }
+}

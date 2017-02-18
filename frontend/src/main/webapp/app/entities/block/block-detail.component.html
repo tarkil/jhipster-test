@@ -1,0 +1,35 @@
+
+<div *ngIf="block">
+    <h2><span jhiTranslate="frontendApp.block.detail.title">Block</span> {{block.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="frontendApp.block.name">Name</span></dt>
+        <dd>
+            <span>{{block.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="frontendApp.block.launchDate">Launch Date</span></dt>
+        <dd>
+            <span>{{block.launchDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="frontendApp.block.game">Game</span></dt>
+        <dd>
+            <div *ngIf="block.gameId">
+                <a [routerLink]="['game', block.gameId]">{{block.gameId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'block/'+ block.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

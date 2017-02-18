@@ -1,0 +1,80 @@
+entity Game {
+	name String required minlength(5) maxlength(50),
+    description String maxlength(250),
+    launchDate LocalDate
+}
+
+entity Block {
+	name String required minlength(5) maxlength(50),
+    launchDate LocalDate required,
+}
+entity Edition {
+	name String required minlength(5) maxlength(50),
+    launchDate LocalDate required
+}
+
+entity CardType {
+	name String required
+}
+enum Rarity {
+	MYTHIC,
+    RARE,
+    UNCOMMON,
+    COMMON,
+    SPECIAL,
+    BASIC
+}
+entity Card {
+	name String required,
+    cost String,
+    textFlavour String maxlength(150),
+    description String maxlength(500),
+    attack Integer,
+    defense Integer,
+    trait String,
+    rarity  Rarity
+}
+
+entity Reprint {
+	image String maxlength(250)
+  	artist String maxlength(50)
+    number Integer
+}
+
+relationship ManyToMany {
+	Edition{cards} to Card
+}
+
+relationship OneToMany {
+	Card{reprints} to Reprint	
+}
+
+relationship OneToOne {
+	Reprint{edition} to Edition
+}
+
+relationship OneToMany {
+	Block{editions} to Edition{block}
+}
+
+relationship OneToMany {
+	Game{blocks} to Block{game},
+    Game{cardTypes} to CardType
+}
+
+relationship OneToOne {
+	Card{type} to CardType
+}
+
+// Set pagination options
+paginate * with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+microservice * with cards 
+search * with elasticsearch except CardType, Reprint
+// Set an angular suffix
+//angularSuffix * with cards

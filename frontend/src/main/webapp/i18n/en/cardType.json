@@ -1,0 +1,27 @@
+{
+    "frontendApp": {
+        "cardType" : {
+            "home": {
+                "title": "Card Types",
+                "createLabel": "Create a new Card Type",
+                "createOrEditLabel": "Create or edit a Card Type",
+                "search": "Search for Card Type"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Card Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Card Type"
+            },
+            "name": "Name",
+            "game": "Game"
+        }
+    },
+    "cardsApp": {
+        "cardType" : {
+            "created": "A new Card Type is created with identifier {{ param }}",
+            "updated": "A Card Type is updated with identifier {{ param }}",
+            "deleted": "A Card Type is deleted with identifier {{ param }}"
+        }
+    }
+}
